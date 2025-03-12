@@ -31,7 +31,9 @@ export type TQuillAttributes = {
   bold?: boolean;
   color?: string;
   link?: string;
+  
 };
+
 
 export type TTextBlock = {
   attributes?: TQuillAttributes;

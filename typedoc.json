@@ -1,0 +1,8 @@
+{
+  "entryPoints": ["."],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "tsconfig": "tsconfig.json",
+  "excludeInternal": true,
+  "excludePrivate": true
+}
