@@ -15,7 +15,7 @@ export default function ExplainStudentsCharitiesItem({
 }: ExplainStudentsCharitiesItemProps) {
   const { img, name, text, link } = item;
   return (
-    <li className="border-t-8 border-mainGold-500 rounded-base flex items-center p-4 gap-6 shadow-[0px_4px_4px_0px_#00000026]">
+    <li className="border-t-8 border-mainGold-500 rounded-base flex items-center p-4 xs:gap-6 gap-2 shadow-[0px_4px_4px_0px_#00000026]">
       <Image
         src={img}
         width={80}
@@ -31,8 +31,9 @@ export default function ExplainStudentsCharitiesItem({
           styleSize="none"
           className="pb-2 border-b-mainGray-600"
           href={link}
+          target="_blank"
         >
-          <h6>בקרו באתר העמותה</h6>
+      בקרו באתר העמותה
           <ArrowSvg />
         </LinkCmp>
       </div>

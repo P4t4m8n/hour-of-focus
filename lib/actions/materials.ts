@@ -17,6 +17,7 @@ import {
 import { materialsServerUtils } from "@/utils/server/materials.util";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
+import { imageUpload } from "../imageUpload";
 /**
  * Creates a new material and updates the state with the result.
  *
@@ -31,24 +32,24 @@ export async function createMaterial(
 ): Promise<TFormState<TMaterialDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
-    const data = materialsServerUtils.fromDataToDto(formData);
+    const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
 
     dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
       ...data,
-      createBy: userId,
     });
 
     materialsServerUtils.validateMaterialsDtoCreate(dto);
-    const { createBy, imgPath, link, subject } = dto;
+    const { link, subject } = dto;
+
+    const imgPath = await imageUpload.uploadToCdn(imgFile);
 
     const collection = await getCollection<TMaterialDocument>("materials");
     const { acknowledged, insertedId } = await collection.insertOne({
       subject,
       link,
       imgPath,
-      createBy: new ObjectId(createBy),
     });
 
     if (!acknowledged || !insertedId) {
@@ -83,17 +84,20 @@ export async function updateMaterial(
 ): Promise<TFormState<TMaterialDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
-    const data = materialsServerUtils.fromDataToDto(formData);
+    const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
 
-    dto = materialsServerUtils.sanitizeMaterialsDtoUpdate({
-      ...data,
-      updateBy: userId,
-    });
+    dto = materialsServerUtils.sanitizeMaterialsDtoUpdate(data);
 
     materialsServerUtils.validateMaterialsDtoUpdate(dto);
-    const { createBy, imgPath, link, subject, updateBy, _id } = dto;
+
+    if (imgFile) {
+      const imgPath = await imageUpload.uploadToCdn(imgFile);
+      data.imgPath = imgPath;
+    }
+
+    const { imgPath, link, subject, _id } = dto;
 
     const collection = await getCollection<TMaterialDocument>("materials");
     const { modifiedCount } = await collection.updateOne(
@@ -103,9 +107,6 @@ export async function updateMaterial(
           subject,
           link,
           imgPath,
-          _id: new ObjectId(_id),
-          updateBy: new ObjectId(updateBy),
-          createBy: new ObjectId(createBy),
           updateDate: new Date(),
         },
       }

@@ -7,13 +7,13 @@ import {
 
 export default function AboutJoinUs() {
   return (
-    <div className="bg-mainOrange-700 flex flex-col py-12 mobile:px-4 items-center gap-12 mobile:gap-6 w-[90vw] mobile:w-full rounded-[5rem] mobile:rounded-none">
-      <h3 className=" text-mainWhite-0 mobile:text-24">הצטרפות למיזם</h3>
-      <p className="text-18 mobile:text-16 leading-10 text-mainWhite-0 text-center max-w-[40rem]">
+    <div className="bg-mainOrange-700 py-10 flex flex-col gap-10 px-sides md:px-0 justify-center items-center  md:rounded-[5rem] rounded-none md:w-[calc(100%-12rem)] w-full ">
+      <h3 className=" text-mainWhite-0 text-center text-24 md:text-44 ">הצטרפות למיזם</h3>
+      <p className="md:text-20 text-16 leading-10 text-mainWhite-0 text-center md:max-w-[35rem]">
         על מנת להצטרף למיזם, התלמידים מתבקשים לפנות דרך הצוות החינוכי האחראי
         עליהם, אשר יוכל ליצור איתנו קשר דרך האתר.
       </p>
-      <nav className="flex mobile flex-col gap-8 mobile:gap-4">
+      <nav className="flex flex-col sm:flex-row md:flex-col lg:flex-row md:gap-8 gap-4 w-full justify-center items-center">
         <LinkCmp
           styleMode="whiteBorder"
           styleSize="large"

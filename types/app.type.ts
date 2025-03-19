@@ -22,7 +22,6 @@ export type TAcccibility = {
 };
 
 export type TQuillTextSize = (typeof QUILL_TEXT_SIZES)[number];
-export type TInsert = string;
 
 export type TQuillAttributes = {
   size?: TQuillTextSize;

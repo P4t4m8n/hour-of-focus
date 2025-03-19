@@ -62,6 +62,7 @@ export default function EmailForm() {
           styleSize="large"
           type="submit"
           disabled={isPending}
+          className="self-center"
         >
           {isPending ? <Loader /> : "שלח"}
         </Button>

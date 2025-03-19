@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-* For text editor to work properly
-* TODO -- Add a better way to handle this
-*/
-/* body > *,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-a {
-  text-align: right !important;
-} */
-
 .ql-editor {
   font-family: "Open sans";
   text-align: right !important;
@@ -101,13 +84,13 @@ h3 {
   @apply text-44 font-bold text-mainGray-800 leading-52;
 }
 h4 {
-  @apply text-36 font-bold text-mainGray-600 leading-42;
+  @apply text-24 md:text-36 font-bold text-mainGray-600 leading-42;
 }
 h5 {
   @apply text-24 text-mainGray-600 font-semibold leading-28;
 }
 h6 {
-  @apply text-18 font-bold leading-21;
+  @apply text-18 font-bold ;
 }
 
 /*
@@ -149,17 +132,13 @@ h6 {
 /* 
  * FAQ section styling
  */
-/* Layout for FAQ question labels - creates a grid with content and icon areas */
-.faq-label {
-  grid-template-columns: 1fr 1.5rem;
-  @apply grid w-full justify-between items-center h-full;
-}
+
 
 /* Styling for the plus/minus toggle icons in FAQs */
 .plus,
 .minus {
-  grid-area: 1/2/-1/-1; /* Position icons in the second column */
-  @apply stroke-mainGray-800 fill-mainGray-800 w-6 h-6 opacity-100 z-[1] transition-all duration-200 ease-out;
+  grid-area: 1/2/-1/-1; 
+  @apply stroke-mainGray-800 fill-mainGray-800 w-6 h-6 opacity-100 z-[1] transition-all duration-300;
 }
 
 /* Hide plus icon when FAQ item is expanded (radio checked) */
@@ -175,17 +154,11 @@ h6 {
 /* When FAQ item is selected, expand the answer area */
 .faq-radio:checked + .faq-label {
   height: auto;
-  gap: 1rem;
   & .faq-answer {
     grid-template-rows: 1fr;
   }
 }
 
-/* Default collapsed state for FAQ answers with smooth transition effect */
-.faq-answer {
-  grid-template-rows: 0fr;
-  @apply grid transition-all duration-200 ease-out;
-}
 
 .hamburger {
   & .line {
@@ -219,7 +192,9 @@ h6 {
   display: block;
 }
 .explain-mobile:has(.open) {
-  height: 8rem;
+  & svg{
+    rotate: 180deg;
+  }
 }
 
 .menu-model {
@@ -336,4 +311,24 @@ h6 {
   & a {
     pointer-events: none;
   }
+}
+
+
+@keyframes fadeIn {
+  from {
+    /* opacity: 0; */
+    height: 0rem;
+  }
+  to {
+    /* opacity: 1; */
+    height: 5.5rem;
+  }
+}
+
+.fade-in{
+  animation: fadeIn .3s forwards;
+  overflow: hidden;
+
+  
+  @apply bg-mainWhite-0 rounded-base flex flex-col gap-4 pt-4 pr-4 ;
 }

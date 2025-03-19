@@ -5,7 +5,7 @@ import HeroCmp from "@/components/UI/HeroCmp";
 
 export default function ExplainVolunteersIndex() {
   return (
-    <section className="flex flex-col gap-24 mobile:gap-12 h-fit pb-32 mobile:pb-16">
+    <section className="flex flex-col gap-gaps md:gap-gaps-md pb-gaps md:pb-gaps-md">
       <HeroCmp text="הסבר למתנדבים" />
       <ExplainVolunteersInfo />
       <ExplainVolunteersMiddle />

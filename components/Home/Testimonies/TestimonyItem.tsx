@@ -12,7 +12,7 @@ export default function TestimonyItem({
   const { delta } = testimony;
   return (
     <article
-      className={`text-24 w-full  mobile:text-16 font-normal leading-40 h-[13rem] text-mainGray-800 italic mobile:h-32 mobile:leading-7 flex justify-center items-center transition-opacity duration-300 ${
+      className={`w-full text-16 sm:text-24 font-normal text-mainGray-800 italic  h-52 leading-8 md:leading-40 flex justify-center items-center transition-opacity duration-300 truncate ${
         isFading ? "opacity-0" : "opacity-100"
       }`}
     >

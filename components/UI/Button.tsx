@@ -1,31 +1,31 @@
 export const STYLES = {
   full: {
     style:
-      "bg-mainOrange-700 text-mainWhite-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center font-bold text-18 mobile:text-16 font-bold leading-21",
+      "bg-mainOrange-700 text-mainWhite-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center font-bold  font-bold leading-21",
     loading: "bg-mainOrange-800",
   },
   coloredBorder: {
     style:
-      "bg-inherit border-2 border-mainOrange-700 text-mainOrange-700 hover:border-mainOrange-800 hover:text-mainOrange-800 rounded-base flex  mobile:text-16  justify-center items-center",
+      "bg-inherit border-2 border-mainOrange-700 text-mainOrange-700 hover:border-mainOrange-800 hover:text-mainOrange-800 rounded-base flex  justify-center items-center",
     loading: "shadow-mainOrange-600 text-mainOrange-600",
   },
   whiteBorder: {
     style:
-      "border-2 bg-inherit border-mainWhite-0 text-mainWhite-0 hover:border-mainGray-300  hover:text-mainGray-300 rounded-base flex justify-center items-center text-18  mobile:text-16 font-bold leading-21",
+      "border-2 bg-inherit border-mainWhite-0 text-mainWhite-0 hover:border-mainGray-300  hover:text-mainGray-300 rounded-base flex justify-center items-center  font-bold leading-21",
     loading: "shadow-mainGray-800 text-mainGray-800",
   },
   borderB: {
     style:
-      "font-bold border-b-2 border-mainOrange-700 text-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 flex justify-center items-center  mobile:text-16",
+      "font-bold border-b-2 border-mainOrange-700 text-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 flex justify-center items-center ",
     loading: "border-mainOrange-600 text-mainOrange-600",
   },
   arrow: {
     style:
-      "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex  mobile:text-16 justify-center items-center gap-1 w-fit",
+      "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex items-center gap-1 w-fit",
     loading: "border-mainGray-800 text-mainGray-800",
   },
   center: {
-    style: "flex justify-center items-center mobile:text-16",
+    style: "flex justify-center items-center",
     loading: "",
   },
   none: {
@@ -38,8 +38,8 @@ export const SIZES = {
   extraSmall: "h-8 w-48",
   small: "h-8 w-32",
   medium: "h-12 w-[18.25rem]",
-  large: "h-12 w-60 ",
-  long: "h-[2.625rem] w-[20.875rem] leading-21",
+  large: "h-12 md:w-60 w-[min(18rem,100%)]",
+  long: "h-[2.625rem]  leading-21 max-w-[min(18rem,100%)] sm:max-w-[20rem] w-full ",
   none: "",
 } as const;
 
@@ -76,7 +76,7 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  const style = `flex self-center justify-center items-center transition-colors duration-300  ${
+  const style = ` transition-colors duration-300  ${
     STYLES[styleMode].style
   } ${className} ${SIZES[styleSize]} ${
     props.disabled ? STYLES[styleMode]?.loading : ""

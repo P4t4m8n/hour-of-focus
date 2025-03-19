@@ -1,22 +1,39 @@
+//UI
 import { ApproveSvg } from "@/components/UI/icons/Icons";
 import HighlightsList from "@/components/UI/HighlightsList";
-
+/**
+ * ExplainVolunteersMiddle is a server component that renders a section
+ * explaining what is expected from volunteers and the benefits of joining.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} A JSX element containing the explanation for volunteers.
+ *
+ * @dependencies
+ * - ApproveSvg: A component that renders an SVG icon for approval.
+ * - HighlightsList: A component that renders a list of highlights.
+ *
+ */
 export default function ExplainVolunteersMiddle() {
   return (
-    <div className="bg-mainWhite-50 mx-24 mobile:mx-0 py-12 items-center flex flex-col rounded-b-[160px] mobile:rounded-b-none gap-28">
-      <div className="items-center flex flex-col gap-8">
-        <h4 className="mobile:text-24">מה מצופה מהמתנדבים?</h4>
-        <ul className="grid grid-cols-2 mobile:grid-cols-1 grid-rows-2 gap-8">
+    <div className="bg-mainWhite-50 flex flex-col sm:rounded-b-[160px] sm:items-center  pt-gaps gap-gaps lg:gap-gaps-md px-sides sm:px-10 lg:px-sides-sm pb-gaps lg:mx-24">
+      <div className=" flex flex-col gap-gaps w-full sm:items-center">
+        <h4 className="text-24 md:text-36 sm:text-center text-right w-fit">
+          מה מצופה מהמתנדבים?
+        </h4>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-2 md:gap-x-10 w-fit  ">
           {items.map((item, index) => (
-            <li key={index} className="flex items-center gap-2">
+            <li key={index} className="flex gap-2">
               <ApproveSvg />
-              <p className=" leading-30 text-18 text-mainGray-800">{item}</p>
+              <p className=" leading-2 text-16 md:text-18 text-mainGray-800">
+                {item}
+              </p>
             </li>
           ))}
         </ul>
       </div>
-      <div className="items-center flex flex-col gap-16 w-full px-8 mobile:px-1">
-        <h4 className="mobile:text-center mobile:text-24">
+      <div className="items-center justify-center flex flex-col gap-gaps w-full ">
+        <h4 className="text-24 md:text-36 self-start sm:self-center">
           למה כדאי להצטרף אלינו?
         </h4>
         <HighlightsList />

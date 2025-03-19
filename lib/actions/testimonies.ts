@@ -50,7 +50,7 @@ export async function createTestimony(
     }
 
     revalidatePath("/admin/testimonies");
-    revalidatePath(`/@testimonies`);
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
 
@@ -103,7 +103,7 @@ export async function updateTestimony(
     }
 
     revalidatePath("/admin/testimonies");
-    revalidatePath(`/@testimonies`);
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {

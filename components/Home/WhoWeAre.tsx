@@ -1,29 +1,37 @@
+//Next
 import Image from "next/image";
+//UI
 import ItemList from "../UI/ItemList";
+import GenericInfoCmp from "../UI/GenericInfoCmp";
+//Constants
 import { WHO_WE_ARE_IMAGE } from "@/constants/images";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6 justify-around home-layout-who-we-are">
-      <ItemList<{ header: string; text: string; _id: undefined }>
-        listStyle=" flex flex-col gap-12 w-[calc(50%-5rem)] mobile:w-full"
-        items={items}
-        renderItem={(item) => (
-          <WhoWeAreItem header={item.header} text={item.text} />
-        )}
-      />
-
-      <div className="image-border h-[32rem] medium:h-[26rem] medium:place-self-center mobile:h-64 mobile:w-[23rem] mobile:self-center  mobile-small:w-[calc(100%-.25rem)]  before:bg-mainGold-500 after:bg-mainGold-500 relative">
+    <GenericInfoCmp
+      className="home-layout-who-we-are"
+      info={
+        <ItemList<{ header: string; text: string; _id: undefined }>
+          listStyle=" flex flex-col gap-10 w-full order-2 lg:order-1 "
+          items={items}
+          renderItem={(item) => (
+            <WhoWeAreItem header={item.header} text={item.text} />
+          )}
+        />
+      }
+      image={
         <Image
           width={512}
           height={512}
           src={WHO_WE_ARE_IMAGE}
           alt="Who we are"
-          className="object-cover h-full w-full"
+          className="object-fill h-full w-full "
           priority
         />
-      </div>
-    </div>
+      }
+      imgConStyle="order-1 lg:order-2"
+     
+    />
   );
 }
 

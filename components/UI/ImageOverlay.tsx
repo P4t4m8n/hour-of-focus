@@ -17,7 +17,10 @@ export default function ImageOverlay({
   const { children } = props;
   const style = `absolute inset-0 bg-imageOverlay-60`;
   return (
-    <div {...props} className="relative grid-stack w-full h-full">
+    <div
+      {...props}
+      className="relative grid-stack w-full h-full overflow-hidden"
+    >
       {children}
       <div className={style}></div>
     </div>

@@ -29,3 +29,7 @@ export default function ItemList<T extends { _id?: string }>({
     </ul>
   );
 }
+
+
+
+//grid grid-cols-[repeat(auto-fill,minmax(10rem,min(100%,23rem)))] gap-gaps w-full  px-sides lg:px-sides-sm  

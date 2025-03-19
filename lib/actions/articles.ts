@@ -53,7 +53,7 @@ export async function createArticle(
     }
 
     revalidatePath("/admin/articles");
-    revalidatePath(`/@articles`);
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -131,7 +131,7 @@ export async function updateArticle(
     }
 
     revalidatePath("/admin/articles");
-    revalidatePath(`/@articles`);
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {

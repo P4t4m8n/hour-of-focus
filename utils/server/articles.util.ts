@@ -1,6 +1,8 @@
+//Utils
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
+//Types
 import { TArticleDto } from "@/types/articles.type";
 
 const sanitizeArticleDtoCreate = (dto: TArticleDto): TArticleDto => {
@@ -83,7 +85,6 @@ const validateArticleDtoCreate = (
   }
   return errors;
 };
-
 const sanitizeArticleDtoUpdate = (dto: TArticleDto): TArticleDto => {
   const updateBy = sanitizeUtil.sanitizedObjectField(dto?.updateBy) || "";
   const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
@@ -94,7 +95,6 @@ const sanitizeArticleDtoUpdate = (dto: TArticleDto): TArticleDto => {
     _id,
   };
 };
-
 const validateArticleDtoUpdate = (
   dto: TArticleDto
 ): Record<keyof TArticleDto, string> => {
@@ -118,7 +118,6 @@ const validateArticleDtoUpdate = (
   }
   return errors;
 };
-
 const fromDataToDto = (formData: FormData): TArticleDto => {
   const publishDate = formData.get("publishDate") as string;
   const link = formData.get("link") as string;
@@ -138,7 +137,6 @@ const fromDataToDto = (formData: FormData): TArticleDto => {
     publishPlace,
   };
 };
-
 const getEmpty = (): TArticleDto => {
   return {
     publishPlace: "",

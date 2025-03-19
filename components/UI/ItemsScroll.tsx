@@ -44,13 +44,13 @@ export default function ItemsScroll<T>({
   };
 
   return (
-    <div className="flex items-center justify-between text-center  w-full">
+    <div className="flex items-center justify-between text-center gap-4 w-full">
       <Button onClick={() => onClick(-1)} aria-label="previous item">
-        <DirectionSvg className="-rotate-90 h-16 w-16 mobile:h-10 mobile:w-10 bg-inherit" />
+        <DirectionSvg className="-rotate-90 h-10 w-10 md:h-16 md:w-16 bg-inherit" />
       </Button>
 
       <div
-        className={`transition-opacity duration-300 ${
+        className={`transition-opacity duration-300 w-full justify-center flex ' ${
           isFading ? "opacity-0" : "opacity-100"
         }`}
       >
@@ -58,7 +58,7 @@ export default function ItemsScroll<T>({
       </div>
 
       <Button onClick={() => onClick(1)} aria-label="next item">
-        <DirectionSvg className="rotate-90 h-16 w-16 mobile:h-10 mobile:w-10 bg-inherit" />
+        <DirectionSvg className="rotate-90 h-10 w-10 md:h-16 md:w-16 bg-inherit" />
       </Button>
     </div>
   );

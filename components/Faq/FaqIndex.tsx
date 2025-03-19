@@ -1,8 +1,11 @@
+//Types
 import { TFaq } from "@/types/faqs";
+//UI
 import ItemList from "../UI/ItemList";
+import HeroCmp from "../UI/HeroCmp";
+//Components
 import FaqItem from "./FaqItem";
 import FaqSwitch from "./FaqSwitch";
-import FaqHero from "./Hero/FaqHero";
 
 interface FaqIndexProps {
   type: "volunteers" | "students";
@@ -10,13 +13,14 @@ interface FaqIndexProps {
 }
 export default function FaqIndex({ type, faqs }: FaqIndexProps) {
   return (
-    <section className="grid w-full items-center justify-items-center gap-24 mobile:gap-12 h-fit">
-      <FaqHero />
-      <div className="grid w-full items-center justify-items-center gap-12 px-16 mobile:px-4 pb-24 mobile:pb-12">
+    <section className="grid w-full items-center justify-items-center pb-gaps gap-gaps h-fit">
+      <HeroCmp text="שאלות ותשובות" />
+
+      <div className="grid w-full items-center gap-gaps justify-items-center px-sides sm:px-sides-sm ">
         <FaqSwitch type={type} />
         <ItemList
           items={faqs}
-          listStyle="grid gap-6 w-full max-w-[80vw] mobile:max-w-full"
+          listStyle="grid gap-6 w-full"
           renderItem={(faq) => <FaqItem {...faq} />}
         />
       </div>

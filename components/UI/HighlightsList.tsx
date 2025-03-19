@@ -1,28 +1,18 @@
 import { ClockSvg, GroupSvg, HeartSvg } from "./icons/Icons";
 
-/**
- * HighlightsList component renders a list of highlight items.
- * Each item includes an icon, a title, and a text description.
- *
- * @component
- *
- * @returns {JSX.Element} A list of highlight items.
- */
 export default function HighlightsList() {
   return (
-    <ul className="flex mobile:flex-col-reverse justify-around mobile:gap-6 w-full">
+    <ul className="flex flex-col-reverse sm:flex-row justify-around gap-6 w-full lg:max-w-[70vw]">
       {items.map((item, index) => (
         <li
           key={index}
-          className="grid justify-items-center gap-4 mobile:gap-1 text-mainOrange-700"
+          className="grid justify-items-center h-fit  gap-4 text-mainOrange-700"
         >
           {item.icon}
-          <h5 className="mobile:text-18 text-mainOrange-700 mobile:font-bold">
+          <p className="text-18 xl:text-24 text-mainOrange-700 font-bold text-center">
             {item.title}
-          </h5>
-          <p className="leading-30 mobile:text-center mobile:text-18">
-            {item.text}
           </p>
+          <p className="leading-30 text-18  text-wrap sm:text-center">{item.text}</p>
         </li>
       ))}
     </ul>
@@ -31,20 +21,20 @@ export default function HighlightsList() {
 
 const items = [
   {
-    icon: <ClockSvg className="w-14 h-14 mobile:w-12 mobile:h-12 fill-none" />,
+    icon: <ClockSvg className="md:w-14 md:h-14 w-12 h-12 fill-none" />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },
   {
     icon: (
-      <GroupSvg className="w-14 h-14  mobile:w-12 mobile:h-12 fill-mainOrange-700" />
+      <GroupSvg className="md:w-14 md:h-14 w-12 h-12 fill-mainOrange-700" />
     ),
     title: "ליווי אישי",
     text: "צוות תומך לאורך כל הדרך",
   },
   {
     icon: (
-      <HeartSvg className="w-14 h-14  mobile:w-12 mobile:h-12 stroke-mainOrange-700 fill-none" />
+      <HeartSvg className="md:w-14 md:h-14 w-12 h-12 stroke-mainOrange-700 fill-none" />
     ),
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",

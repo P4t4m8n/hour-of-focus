@@ -1,6 +1,8 @@
+//Utils
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
+//Types
 import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faqs";
 import { isValidObjectId } from "@/lib/mongoClient";
 

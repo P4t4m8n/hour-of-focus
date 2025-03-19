@@ -1,6 +1,5 @@
 import "server-only";
 
-
 import { Document, MongoClient, ObjectId } from "mongodb";
 
 if (!process.env.MONGODB_URI) {
@@ -39,7 +38,7 @@ export const connectDB = async () => {
 export const closeDB = async () => {
   await mongoClient.close();
 };
-
+//Objectid validation is here because validation util my be used in the front
 export const isValidObjectId = (id: string): boolean => {
   return ObjectId.isValid(id);
 };

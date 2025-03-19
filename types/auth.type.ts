@@ -11,7 +11,7 @@ export type TAuthDto = {
   email?: string;
 };
 
-export type TUserDocument = Document &
+export type TAuthDocument = Document &
   Omit<TAuth, "_id" | "password"> & {
     passwordHash: string;
     _id?: ObjectId;

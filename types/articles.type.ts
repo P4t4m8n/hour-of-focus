@@ -10,7 +10,7 @@ export type TArticle = {
   createBy?: TAuth;
   updateBy?: TAuth;
   updateAt?: string;
-  createdAt?: string;
+  createAt?: string;
 };
 
 export type TArticleDto = Omit<

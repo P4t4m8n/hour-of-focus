@@ -1,6 +1,9 @@
 import "server-only";
+//Sanitation
 import sanitizeHtml from "sanitize-html";
+//Types
 import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
+//Constants
 import { ALLOWED_ATTRIBUTES } from "@/constants/quill";
 /**
  * Sanitizes a field from FormData.
@@ -30,7 +33,11 @@ const sanitizedBoolean = (value?: unknown): boolean => {
     .toLowerCase()
     .includes("false");
 };
-
+/**
+ * Sanitizes a Quill Delta object.
+ * @param delta The Quill Delta object to sanitize.
+ * @returns The sanitized Quill Delta object.
+ */
 const sanitizeDelta = (delta?: TTextBlock[]): TTextBlock[] => {
   if (!delta) return [];
   return delta.map((block) => {

@@ -66,6 +66,7 @@ export default function AdminTestimoniesEdit({
         type="submit"
         styleMode="full"
         styleSize="large"
+        className="self-center"
       >
         שמור
       </Button>

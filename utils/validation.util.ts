@@ -25,26 +25,6 @@ const validateStrLength = (
   return null;
 };
 /**
- * Validates that an array has the specified minimum length.
- * @param filedName - Name of the field being validated.
- * @param arr - Array to validate.
- * @param length - Minimum length required.
- * @returns An error message or null if valid.
- */
-const validateArrayLength = (
-  filedName: string,
-  arr: unknown[] | null | undefined,
-  length: number
-): string | null => {
-  if (!arr) {
-    return `${filedName} is required.`;
-  }
-  if (arr?.length < length) {
-    return `At least ${length} ${filedName} is required.`;
-  }
-  return null;
-};
-/**
  * Validates that a value is neither null nor undefined.
  * @param filedName - Name of the field being validated.
  * @param value - Value to validate.
@@ -59,90 +39,14 @@ const validateExistence = (
   }
   return null;
 };
-/**
- * Validates that a string contains only letters, numbers, and spaces.
- * @param filedName - Name of the field being validated.
- * @param value - String to validate.
- * @returns An error message or null if valid.
- */
-const validateLettersAndNumbers = (
-  filedName: string,
-  value?: string | null
-): string | null => {
-  if (value === null || value === undefined || !value) return null;
-  if (!/^[a-zA-Z0-9 ]+$/.test(value)) {
-    return `${filedName} can only contain letters, numbers, and spaces.`;
-  }
-  return null;
-};
-/**
- * Validates that a string contains only letters.
- * @param filedName - Name of the field being validated.
- * @param value - String to validate.
- * @returns An error message or null if valid.
- */
-const validateLetters = (filedName: string, value?: string): string | null => {
-  if (value === null || value === undefined) return null;
-  if (!/^[a-zA-Z]+$/.test(value)) {
-    return `${filedName} contain only letters.`;
-  }
-  return null;
-};
-/**
- * Validates that a value contains only numbers.
- * @param filedName - Name of the field being validated.
- * @param value - Value to validate.
- * @returns An error message or null if valid.
- */
-const validateNumbers = (
-  filedName: string,
-  value?: string | number | null
-): string | null => {
-  if (value === null || value === undefined) return null;
-  if (!/^[0-9]+$/.test(value?.toString() || "")) {
-    return `${filedName} contain only numbers.`;
-  }
-  return null;
-};
-/**
- * Validates that a value is a valid Date object or string.
- * @param filedName - Name of the field being validated.
- * @param value - Date or date string to validate.
- * @returns An error message or null if valid.
- */
-const validateDate = (
-  filedName: string,
-  value?: Date | null | string
-): string | null => {
-  if (value instanceof Date) {
-    return null;
-  }
 
-  if (value === null || value === undefined) {
-    return `${filedName} is required.`;
-  }
-
-  const _value = typeof value === "string" ? new Date(value) : value;
-  if (isNaN(_value?.getTime())) {
-    return `${filedName} is invalid.`;
-  }
-  return null;
-};
 /**
- * Validates that a string can be parsed as a valid date.
+ * Validates that a string matches one of the values in an array.
  * @param filedName - Name of the field being validated.
- * @param value - Date string to validate.
+ * @param checkStr - String to validate.
+ * @param strArr - Array of valid strings.
  * @returns An error message or null if valid.
  */
-const validateDateStr = (filedName: string, value?: string): string | null => {
-  if (value === null || value === undefined) {
-    return `${filedName} is required.`;
-  }
-  if (isNaN(Date.parse(value))) {
-    return `${filedName} is invalid.`;
-  }
-  return null;
-};
 const compareStr = <T>(
   filedName: string,
   checkStr?: string,
@@ -154,11 +58,23 @@ const compareStr = <T>(
   }
   return null;
 };
+/**
+ * Validates that a string is a valid URL.
+ * @param filedName - Name of the field being validated.
+ * @param value - URL to validate.
+ * @returns An error message or null if valid.
+ */
 const validateUrl = (filedName: string, value?: unknown): string | null => {
   const isString = _isString(value);
   if (!isString) return `${filedName} שדה חובה.`;
   return DEV_URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
 };
+/**
+ * Validates that a string is a valid hex color code.
+ * @param filedName - Name of the field being validated.
+ * @param value - Color code to validate.
+ * @returns An error message or null if valid.
+ */
 const validateColorHex = (
   filedName: string,
   value?: unknown
@@ -167,12 +83,24 @@ const validateColorHex = (
   if (!isString) return `${filedName} שדה חובה.`;
   return ALLOWED_COLORS_REGEX.test(value) ? null : `${filedName} is invalid.`;
 };
+/**
+ * Validates that a string is a valid Quill text size.
+ * @param filedName - Name of the field being validated.
+ * @param value - Text size to validate.
+ * @returns An error message or null if valid.
+ */
 const validateTextSize = (filedName: string, value?: string): string | null => {
   if (!value) return `${filedName} שדה חובה.`;
   const fontCheck = ALLOWED_TEXT_SIZES.has(value as TQuillTextSize);
 
   return fontCheck ? null : `${filedName} גודל טקסט לא חוקי.`;
 };
+/**
+ * Validates that a value is a boolean.
+ * @param filedName - Name of the field being validated.
+ * @param value - Value to validate.
+ * @returns An error message or null if valid.
+ */
 const validateBoolean = (filedName: string, value?: unknown): string | null => {
   if (value === null || value === undefined) {
     return `${filedName} שדה חובה.`;
@@ -182,6 +110,12 @@ const validateBoolean = (filedName: string, value?: unknown): string | null => {
   }
   return null;
 };
+/**
+ * Validates a Quill Delta object.
+ * @param errors - Object to store validation errors.
+ * @param delta - Quill Delta object to validate.
+ * @param name - Name of the field being validated.
+ */
 const validateDelta = (
   errors: Record<string, string>,
   delta?: TTextBlock[],
@@ -238,6 +172,12 @@ const validateDelta = (
     Object.assign(errors, blockErrors);
   });
 };
+/**
+ * Checks if a value is a string.
+ * @private
+ * @param value - Value to check.
+ * @returns True if the value is a string, false otherwise.
+ */
 const _isString = (value: unknown): value is string => {
   return !(value === null || value === undefined || typeof value !== "string");
 };
@@ -247,13 +187,7 @@ const _isString = (value: unknown): value is string => {
  */
 export const validationUtil = {
   validateStrLength,
-  validateArrayLength,
   validateExistence,
-  validateLettersAndNumbers,
-  validateLetters,
-  validateNumbers,
-  validateDate,
-  validateDateStr,
   compareStr,
   validateUrl,
   validateColorHex,

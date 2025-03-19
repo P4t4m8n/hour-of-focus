@@ -6,13 +6,16 @@ interface NavLinkProps {
   isHighlighted?: boolean;
   children?: React.ReactNode;
 }
-export default function NavLink({
+export default function NavLinkItem({
   href,
   children,
   isHighlighted,
 }: NavLinkProps) {
   return (
-    <LinkCmp className={` ${isHighlighted ? "font-bold" : ""} `} href={href}>
+    <LinkCmp
+      className={`leading-7 ${isHighlighted ? "font-bold" : ""} `}
+      href={href}
+    >
       {children}
     </LinkCmp>
   );

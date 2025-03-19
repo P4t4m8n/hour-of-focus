@@ -25,7 +25,7 @@ export default function AdminTestimoniesIndex({
   testimonies,
 }: AdminArticlesIndexProps) {
   return (
-    <section className=" p-2 rounded min-w-full h-fit pb-24">
+    <section className="p-2 rounded min-w-full h-fit pb-24">
       <div className="flex justify-between items-center pb-8">
         <h3 className="">המלצות</h3>
         <HandleEdit

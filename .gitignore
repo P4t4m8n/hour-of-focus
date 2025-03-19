@@ -42,7 +42,6 @@ next-env.d.ts
 logs/backend.log
 docs/
 docs/*
-
 .vercel
 .qodo/history.sqlite
 .qodo

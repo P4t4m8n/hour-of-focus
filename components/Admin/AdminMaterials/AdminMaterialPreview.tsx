@@ -27,8 +27,7 @@ export default function AdminMaterialPreview({
             <AdminMaterialsEdit
               materialToEdit={{
                 ...item,
-                createBy: item?.createBy?._id,
-                updateBy: item?.updateBy?._id,
+          
               }}
             />
           )}

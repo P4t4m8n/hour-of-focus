@@ -20,10 +20,10 @@ export default function AccessibilityDeclarationPage() {
       <div className="flex flex-col gap-1">
         <h1>הצהרת נגישות</h1>
         <p className="text-mainGray-800 text-16">
-          הצהרת הנגישות עודכנה בתאריך [תאריך העדכון].
+          הצהרת הנגישות עודכנה בתאריך 2025.
         </p>
         <p className="text-mainGray-800 text-16">
-          אנחנו ב-[שם הארגון] פועלים להנגשת אתר האינטרנט שלנו ([כתובת אתר
+          אנחנו ב - שעה של פוקוס פועלים להנגשת אתר האינטרנט שלנו ([כתובת אתר
           האינטרנט]) לאנשים עם מוגבלות.
         </p>
       </div>

@@ -14,12 +14,13 @@ import ImageOverlay from "./ImageOverlay";
  */
 export default function HeroImage() {
   return (
-    <ImageOverlay className="relative w-full h-[13rem] overflow-hidden grid-stack">
+    <ImageOverlay className="w-full h-full overflow-hidden grid-stack">
       <Image
         src={GINGER_KID_IMAGE}
-        fill
+       width={1080}
+       height={512}
         alt="Ginger kid in front of a screen"
-        className=" w-full h-[13rem] object-cover"
+        className=" w-full h-[200%] object-fill blur-sm"
       />
     </ImageOverlay>
   );

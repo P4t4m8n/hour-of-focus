@@ -1,6 +1,6 @@
 "use server";
 //Types
-import { TAuth, TUserDocument, TAuthDto } from "@/types/auth.type";
+import { TAuth, TAuthDocument, TAuthDto } from "@/types/auth.type";
 import { TFormState } from "@/types/app.type";
 //DB
 import { getCollection } from "../../lib/mongoClient";
@@ -36,7 +36,7 @@ export const signIn = async (
 
     const { password, email } = authDto;
 
-    const userCollection = await getCollection<TUserDocument>("users");
+    const userCollection = await getCollection<TAuthDocument>("users");
 
     const user = await userCollection.findOne({ email });
 
@@ -165,7 +165,7 @@ export const getSessionUser = async (): Promise<TAuth | null> => {
 
     const payload = await authServerUtils.decodeToken(token);
 
-    const userCollection = await getCollection<TUserDocument>("users");
+    const userCollection = await getCollection<TAuthDocument>("users");
 
     const user = await userCollection.findOne({
       _id: new ObjectId(payload?.userId),

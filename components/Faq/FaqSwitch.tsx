@@ -22,7 +22,7 @@ interface FaqProps {
 export default function FaqSwitch({ type }: FaqProps) {
   const isVolunteers = type === "volunteers";
   return (
-    <nav className="bg-mainWhite-100 py-2 px-6 mobile:px-2 rounded-base h-fit flex mobile:flex-col items-center mobile-small:w-full">
+    <nav className="bg-mainWhite-100 rounded-base h-fit flex flex-col xs:flex-row items-center w-[min(31rem,calc(100%))] p-2  ">
       <LinkCmp
         styleMode={!isVolunteers ? "full" : "center"}
         styleSize="large"

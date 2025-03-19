@@ -5,8 +5,8 @@ import React from "react";
 export default function AboutTeam() {
   return (
     <div className="bg-mainWhite-50 grid justify-items-center py-12 gap-10 w-full">
-      <h4 className="mobile:text-24">{`צוות 'שעה של פוקוס'`}</h4>
-      <ul className="flex gap-16">
+      <h4>{`צוות 'שעה של פוקוס'`}</h4>
+      <ul className="flex gap-gaps">
         {items.map((item) => (
           <li
             key={item.name}

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { GINGER_KID_IMAGE } from "./constants/images";
 
 export default {
   content: [
@@ -38,8 +39,17 @@ export default {
           60: "rgba(90, 90, 90, 0.6)",
         },
       },
+
+      backgroundImage: {
+        "ginger-kid":
+          `url('${GINGER_KID_IMAGE}')`,
+      },
+      gridColumn: {
+        materialsLayout: "repeat(auto-fit,_minmax(minSize,_1fr))",
+      },
       fontSize: {
         14: "0.875rem",
+        15: "0.9375rem",
         16: "1rem",
         18: "1.125rem",
         20: "1.25rem",
@@ -49,9 +59,8 @@ export default {
         44: "2.75rem",
       },
       screens: {
-        medium: { max: "1250px" },
-        mobile: { max: "850px" },
-        "mobile-small": { max: "400px" },
+        xs: { min: "24rem" },
+        msm: { min: "28rem" },
       },
 
       borderRadius: {
@@ -59,8 +68,15 @@ export default {
       },
       padding: {
         base: "7.5rem",
+        gaps: "3rem",
+        "gaps-md": "5rem",
+        sides: "1rem",
+        "sides-sm": "6rem",
       },
-
+      gap: {
+        gaps: "3rem",
+        "gaps-md": "5rem",
+      },
       lineHeight: {
         21: "1.35rem",
         23: "1.4875rem",
@@ -70,6 +86,9 @@ export default {
         40: "2.55rem",
         42: "2.625rem",
         52: "3.3rem",
+      },
+      boxShadow: {
+        material: "0px 4px 8px #00000026",
       },
     },
   },

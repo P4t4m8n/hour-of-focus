@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/UI/Button";
 import ErrorLabel from "@/components/UI/ErrorLabel";
+import ImageUploadInput from "@/components/UI/ImageUpload/ImageUploadInput";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 import { createMaterial, updateMaterial } from "@/lib/actions/materials";
@@ -20,8 +21,6 @@ const initialState: TFormState<TMaterialDto> = {
     link: "",
     _id: "",
     subject: "",
-    createBy: "",
-    updateBy: "",
   },
 };
 export default function AdminMaterialEdit({
@@ -38,24 +37,11 @@ export default function AdminMaterialEdit({
       className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
     >
       <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
-      <Input
-        type="hidden"
-        name="createBy"
-        defaultValue={state?.data?.createBy}
+
+      <ImageUploadInput
+        imgPath={state.data?.imgPath}
+        itemId={state.data?._id}
       />
-      <Input
-        type="text"
-        name="imgPath"
-        id={`imgPath-${state?.data?._id}`}
-        defaultValue={state?.data?.imgPath}
-        placeholder="הכנס כתובת תמונה"
-      >
-        <Label htmlFor={`subject-${state?.data?._id}`}>תמונה</Label>
-        <ErrorLabel
-          htmlFor={`subject-${state?.data?._id}`}
-          error={state?.errors?.imgPath}
-        />
-      </Input>
       <Input
         type="text"
         name="link"
